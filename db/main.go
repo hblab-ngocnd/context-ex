@@ -11,8 +11,6 @@ var DefaultDB = func() *db {
 
 func (d *db) Search(ctx context.Context, userID int) <-chan interface{} {
 	out := make(chan interface{})
-	select {
-	case <-ctx.Done():
-	}
+	<-ctx.Done()
 	return out
 }

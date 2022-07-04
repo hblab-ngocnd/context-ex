@@ -1,8 +1,8 @@
 package main
 
 import (
-	"context-ex/handlers"
-	"context-ex/server"
+	"github.com/hblab-ngocnd/context-ex/handlers"
+	"github.com/hblab-ngocnd/context-ex/server"
 )
 
 func main() {
