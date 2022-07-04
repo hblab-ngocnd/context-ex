@@ -8,8 +8,8 @@ import (
 	"net"
 	"time"
 
-	"context-ex/auth"
-	"context-ex/db"
+	"github.com/hblab-ngocnd/context-ex/auth"
+	"github.com/hblab-ngocnd/context-ex/db"
 )
 
 type MyHandlerFunc func(context.Context, MyRequest)
@@ -68,10 +68,9 @@ var GetGreeting MyHandlerFunc = func(ctx context.Context, req MyRequest) {
 }
 
 var NotFoundHandler MyHandlerFunc = func(ctx context.Context, req MyRequest) {
-	var res MyResponse
-	res = MyResponse{
+	res := MyResponse{
 		Code: 404,
-		Body: fmt.Sprintf("Not found"),
+		Body: "Not found",
 	}
 	req.Send(res)
 }
@@ -81,11 +80,10 @@ func (r MyRequest) Send(data MyResponse) {
 	if err != nil {
 		panic(err)
 	}
-	r.conn.Write([]byte("HTTP/1.1  200 OK\r\n"))
-	r.conn.Write([]byte("Content-Type: application/json\r\n"))
-	r.conn.Write([]byte(fmt.Sprintf("Content-Length: %d\r\n", len(body))))
-	r.conn.Write([]byte("\r\n"))
-	r.conn.Write(body)
-	r.conn.Close()
-	return
+	_, _ = r.conn.Write([]byte("HTTP/1.1  200 OK\r\n"))
+	_, _ = r.conn.Write([]byte("Content-Type: application/json\r\n"))
+	_, _ = r.conn.Write([]byte(fmt.Sprintf("Content-Length: %d\r\n", len(body))))
+	_, _ = r.conn.Write([]byte("\r\n"))
+	_, _ = r.conn.Write(body)
+	_ = r.conn.Close()
 }
