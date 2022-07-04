@@ -1,0 +1,19 @@
+== Info:   Trying ::1...
+== Info: TCP_NODELAY set
+== Info: Connected to localhost (::1) port 80 (#0)
+=> Send header, 74 bytes (0x4a)
+0000: HEAD / HTTP/1.1
+0011: Host: localhost
+0022: User-Agent: curl/7.64.1
+003b: Accept: */*
+0048: 
+<= Recv header, 18 bytes (0x12)
+0000: HTTP/1.1  200 OK
+<= Recv header, 32 bytes (0x20)
+0000: Content-Type: application/json
+<= Recv header, 20 bytes (0x14)
+0000: Content-Length: 42
+<= Recv header, 2 bytes (0x2)
+0000: 
+== Info: Excess found in a non pipelined read: excess = 42 url = / (zero-length body)
+== Info: Connection #0 to host localhost left intact
